@@ -40,7 +40,22 @@ grad = zeros(size(theta));
 
 
 
+% lambda = 'regularization parameter'
+options = optimset('GradObj', 'on', 'MaxIter', 100);
 
+% hypthesis
+h = sigmoid(X * theta);
+
+% logistic regression with normalization
+% same old cost function
+J = 1 / m * ( -y' * log( h ) - ( 1 - y )' * log( 1 - h ) )
+
+% normalization extra ( usually written on same line)
+J = J + lambda / ( 2 * m ) * sum(theta(2:end,:) .^ 2);
+
+initial_theta = theta
+initial_theta(1) = 0
+grad = ( 1 / m * ((h - y)' * X) ) + (lambda / m .* initial_theta)'
 
 
 

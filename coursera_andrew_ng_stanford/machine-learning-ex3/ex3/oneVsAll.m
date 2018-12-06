@@ -50,6 +50,24 @@ X = [ones(m, 1) X];
 %
 
 
+init_theta = zeros(n + 1, 1);
+options = optimset('GradObj', 'on', 'MaxIter', 50);
+
+fprintf "these are the sizes : "
+fprintf "all_theta"
+size(all_theta)
+fprintf "X"
+size(X)
+fprintf "y"
+size(y)
+fprintf "initial theta"
+size(init_theta)
+
+% all_theta = fmincg(@(t)(lrCostFunction(t, X, (y == c), lambda)), init_theta, options);
+
+% for i = 1:10
+%   all_theta[i;1] = fmincg(@(t)(lrCostFunction(t, X, (y == i), lambda)), init_theta, options);
+% end
 
 
 
