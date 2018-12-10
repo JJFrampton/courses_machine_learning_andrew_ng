@@ -22,9 +22,31 @@ p = zeros(size(X, 1), 1);
 %
 
 
+size(Theta1)
+size(Theta2)
+size(X)
+
+X = [ones(size(X, 1), 1) X];
+
+size(X)
+
+l2 = X * Theta1';
 
 
+size(l2)
 
+l2 = [ones(size(l2, 1), 1) sigmoid(l2)];
+%l2 = [zeros(size(l2), 1) l2];
+
+size(l2)
+
+l3 = l2 * Theta2';
+
+i = sigmoid(l3);
+
+[m, i] = max(i, [], 2)
+i(i==10)=0;
+p = i
 
 
 
