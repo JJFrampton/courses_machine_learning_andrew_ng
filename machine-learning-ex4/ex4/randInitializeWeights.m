@@ -20,9 +20,26 @@ W = zeros(L_out, 1 + L_in);
 %
 
 
+%mx = 0.12^2;
+%mn = -1 * mx;
+mx = 0.12;
+mn = -1 * mx;
 
+fprintf(['\nSize of L_out & L_in \n'])
+size(L_out)
+size(L_in)
 
+for i=1:L_in
+  nums = mn + (mx-mn)*rand(1,L_out);
+  nums = nums';
+  fprintf(['/ / / / / / / / / / / / / / / / / / / / / / / / / / / /'])
+  fprintf(['\nThese are the params : %f \n'], size(nums))
+  fprintf(['/ / / / / / / / / / / / / / / / / / / / / / / / / / / /'])
+  W(:,i) = nums;
+end
 
+%epsilon = 0.12;
+%W = rand(L_out, 1 + L_in) * 2 * epsilon − epsilon ;
 
 
 
