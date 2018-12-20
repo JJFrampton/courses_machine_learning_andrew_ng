@@ -19,11 +19,28 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+size(theta)
+
+m = size(X,1);
+sq_errors = 1/(2*m) * (X * theta - y)' * (X * theta - y);
+%sq_errors = 1/(2*m) * (X * theta - y) .^2;
+
+%dont reg theta0
+reg_theta = theta;
+%reg_theta = theta';
+reg_theta(:,1) = zeros(size(reg_theta, 1), 1);
+reg = lambda/(2*m) * sum(reg_theta * reg_theta');
+%reg = lambda/(m) * sum(sum(reg_theta));
+
+%example
+%J = J + lambda / ( 2 * m ) * sum(theta(2:end,:) .^ 2);
+
+J = sq_errors + reg;
 
 
 
 
-
+%J = fmincg()
 
 
 
