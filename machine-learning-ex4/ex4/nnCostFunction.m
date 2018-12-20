@@ -123,39 +123,9 @@ for i=1:m
 
 end
 
-Theta2_grad = Theta2_grad * (1/m);
-Theta1_grad = Theta1_grad * (1/m);
+%Theta2_grad = Theta2_grad * (1/m);
+%Theta1_grad = Theta1_grad * (1/m);
 
-%GIT
-%for k = 1:m,
-%    % First, we do forward propogation on an X that already contains
-%    % the bias node (from above)
-%
-%    a1 = X(k,:);
-%	  a1 = [1 , a1];
-%    z2 = Theta1 * a1';
-%
-%    a2 = sigmoid(z2);
-%    a2 = [1 ; a2];
-%
-%    % Now we have our final activation layer a3 == h(theta)
-%    a3 = sigmoid(Theta2 * a2);
-%
-%    % Now that we have our activation layer, we go backwards
-%    % This basically just involves following along the formulas given
-%    % on Page 9
-%    d3 = a3 - Y(:,k);
-%    
-%    % Re-add a bais node for z2
-%    z2 = [1 ; z2];
-%    d2 = (Theta2' * d3) .* sigmoidGradient(z2);
-%    % Strip out bais node from resulting d2
-%    d2 = d2(2:end);
-%
-%    Theta2_grad = (Theta2_grad + d3 * a2');
-%    Theta1_grad = (Theta1_grad + d2 * a1);
-%
-%endfor;
 
 %
 % Part 3: Implement regularization with the cost function and gradients.
@@ -167,8 +137,11 @@ Theta1_grad = Theta1_grad * (1/m);
 %
 
 
+reg1 = (lambda/m) * [ zeros( size(Theta1, 1), 1) Theta1(:, 2:end) ];
+reg2 = (lambda/m) * [ zeros( size(Theta2, 1), 1) Theta2(:, 2:end) ];
 
-
+Theta1_grad = Theta1_grad ./ m + reg1
+Theta2_grad = Theta2_grad ./ m + reg2
 
 
 
