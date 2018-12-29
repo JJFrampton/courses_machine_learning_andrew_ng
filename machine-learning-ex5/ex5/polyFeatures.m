@@ -15,9 +15,10 @@ X_poly = zeros(numel(X), p);
 %
 % 
 
-
-
-
+%setting up multi polynomials for each X value
+for p=1:p
+  X_poly(:,p) = X.^p;
+end
 
 
 % =========================================================================
