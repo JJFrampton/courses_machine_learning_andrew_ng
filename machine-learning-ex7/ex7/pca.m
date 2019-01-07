@@ -20,9 +20,10 @@ S = zeros(n);
 %       number of examples).
 %
 
+% cvm == sigma, but sigma here is not summation
 
-
-
+cvm = (X'*X) ./m;
+[U,S,V] = svd(cvm);
 
 
 

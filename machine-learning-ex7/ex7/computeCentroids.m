@@ -27,8 +27,20 @@ centroids = zeros(K, n);
 %
 
 
+%THIS COULD AND SHOULD BE VECTORIZED !!!
 
 
+for k = 1:K
+  total = 0;
+  count = 0;
+  for i = 1:m
+    if (idx(i) == k)
+      total = total + X(i,:);
+      count = count + 1;
+    end
+  end
+  centroids(k,:) = total/count;
+end
 
 
 

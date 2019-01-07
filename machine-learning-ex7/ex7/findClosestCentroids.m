@@ -22,9 +22,24 @@ idx = zeros(size(X,1), 1);
 %
 
 
+size(X)
+size(centroids)
 
+%X = X'
+%centroids = centroids'
 
-
+for i = 1:size(X,1)
+  mini = inf;
+  for n = 1:size(centroids,1)
+    %err = (sum(X(i,:) - centroids(n,:)).^2);
+    err = X(i,:) - centroids(n,:);
+    err = err * err'; % get squared sum
+    if (err < mini)
+      mini = err;
+      idx(i) = n;
+    end
+  end
+end
 
 
 % =============================================================
