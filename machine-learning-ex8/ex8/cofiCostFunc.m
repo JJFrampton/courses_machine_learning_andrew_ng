@@ -40,16 +40,38 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+%Cost function
+
+%NOTE only count if R(i,j) = 1 , else there is no score
+%size(X)
+%5 3
+%size(Y)
+%5 4
+%size(Theta)
+%4 3
+%X
+%R
+err = (X * Theta' - Y);
+J = err.^2;
+%J
+J = sum((J) (R==1));
+J = J / 2;
+
+%Cost with regularization for theta and X
+%J = lambda * sum(Theta(:).^2)/2 % (:) just puts all vals into a column first
+J = J + (lambda / 2) * sum(sum(Theta.^2));
+J = J + (lambda / 2) * sum(sum(X.^2));
 
 
+%Gradient
 
+X_grad = (err.*R) * Theta;
+Theta_grad = (err.*R)' * X;
 
+%Regularized gradient
 
-
-
-
-
-
+X_grad = X_grad + (lambda * X);
+Theta_grad = Theta_grad + (lambda * Theta);
 
 
 
