@@ -1,0 +1,18 @@
+Learning with large data sets
+
+m = 100,000,000
+
+ie. gov census info
+
+gradient decent becomes very expensive
+ie summing over 100,000,000 for each step
+
+options: map reduce gradient decent or stochastic gradient decent
+these options will allow you to scale gradient decent to much larger data sets
+
+
+NOTE:
+wondering if you could use less data for training:
+plot the learning curves (one starting from the top, one from the bottom)
+y=error
+x=training set size
